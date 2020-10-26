@@ -1,20 +1,35 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Generala
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-card>
+    <ion-card-content>
+      <form [formGroup]="playersForm">
+        <ion-item class="ion-margin-bottom">
+          <ion-label>Cantida de jugadores: </ion-label>
+          <ion-select formControlName="quantity" (ionChange)="onChangeQuantity()">
+            <ion-select-option value="2">2</ion-select-option>
+            <ion-select-option value="3">3</ion-select-option>
+            <ion-select-option value="4">4</ion-select-option>
+            <ion-select-option value="5">5</ion-select-option>
+            <ion-select-option value="6">6</ion-select-option>
+            <ion-select-option value="7">7</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-list>
+          <ion-item *ngFor="let player of ' '.repeat(quantity).split(''), let x = index">
+            <ion-label>Player {{x+1}}: </ion-label>
+            <ion-input formControlName="player{{x}}" type="text"></ion-input>
+          </ion-item>
+        </ion-list>
+        <ion-button expand="full" outline="solid" color="primary" (click)="onPlay()">Jugar</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
