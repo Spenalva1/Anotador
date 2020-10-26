@@ -1,0 +1,7 @@
+{
+  "name": "anotador",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
