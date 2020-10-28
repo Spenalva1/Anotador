@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,31 +9,48 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class HomePage implements OnInit {
 
-  playersForm: FormGroup;
+  form = new FormArray([]);
+  formIsValid = false;
   quantity = 2;
 
-  constructor() {}
+
+  constructor(private fb: FormBuilder, private router: Router) {}
 
   ngOnInit() {
-    this.createForm(2);
+    this.updateForm();
   }
 
-  onChangeQuantity(){
-    this.createForm(this.playersForm.value.quantity);
+  get playersList(){
+    return this.form.get('players') as FormArray;
   }
 
-  createForm(quantity: number){
-    this.playersForm = new FormGroup({
-      quantity: new FormControl(quantity)
-    });
-    for (let i = 0; i < quantity; i++){
-      this.playersForm.addControl(`player${i}`, new FormControl(null));
+  onChangeQuantity(playersQuantity: number){
+    this.quantity = playersQuantity;
+    this.updateForm();
+  }
+
+  updateForm(){
+    while (+this.quantity !== this.form.controls.length) {
+      if (this.quantity < this.form.controls.length) {
+        this.form.controls.pop();
+      } else if (this.quantity > this.form.controls.length) {
+        this.form.controls.push(this.fb.control('', {validators: Validators.required}));
+      }
     }
-    this.quantity = quantity;
+    this.validateForm();
+  }
+
+  validateForm() {
+    this.formIsValid = this.form.controls.map(control => control.value).filter(value => value.length <= 0 ).length === 0;
   }
 
   onPlay(){
-    console.log(this.playersForm.value);
+
+    const data = {players: []};
+    this.form.controls.forEach(input => {
+      data.players.push(input.value);
+    });
+    this.router.navigateByUrl('/scorer/' + JSON.stringify(data));
   }
 
 
