@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ScorerPageRoutingModule } from './scorer-routing.module';
 
 import { ScorerPage } from './scorer.page';
+import { FieldComponent } from '../shared/components/field/field.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { ScorerPage } from './scorer.page';
     IonicModule,
     ScorerPageRoutingModule
   ],
-  declarations: [ScorerPage]
+  declarations: [ScorerPage, FieldComponent]
 })
 export class ScorerPageModule {}

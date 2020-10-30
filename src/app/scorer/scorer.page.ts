@@ -15,13 +15,12 @@ export class ScorerPage implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(paramMap => {
-      console.log(paramMap);
-
       const names = JSON.parse(paramMap.get('players')).players;
       names.forEach(playerName => {
         this.players.push(new Player(playerName));
       });
     });
+    console.log(this.players);
   }
 
 }

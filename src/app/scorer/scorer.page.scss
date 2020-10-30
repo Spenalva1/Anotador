@@ -1,3 +1,38 @@
-ion-content{
-    background-color: green;
+ion-content {
+  font-size: 5vw;
+}
+
+.labels {
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 6vh;
+
+    &.space {
+      height: 3vh;
+    }
+
+    &.word {
+      font-size: 4vw;
+    }
+  }
+}
+
+.player {
+  .player-name {
+    height: 3vh;
+  }
+
+  .field {
+    height: 6vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+ion-text {
+  white-space: nowrap;
+  overflow: hidden;
 }

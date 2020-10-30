@@ -5,17 +5,40 @@
 </ion-header>
 
 <ion-content>
-  <div class="col">
-    <div class="box">1</div>
-    <div class="box">2</div>
-    <div class="box">3</div>
-    <div class="box">4</div>
-    <div class="box">5</div>
-    <div class="box">6</div>
-    <div class="box">ESCALERA</div>
-    <div class="box">FULL</div>
-    <div class="box">POKER</div>
-    <div class="box">GENERALA</div>
-    <div class="box">GENERALA DOBLE</div>
-  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-text-end labels" size="3">
+        <div class="space"><br></div>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div class="word">ESCALERA</div>
+        <div class="word">FULL</div>
+        <div class="word">PÓKER</div>
+        <div class="word">GENERALA</div>
+        <div class="word">GENERALA<br>DOBLE</div>
+        <div class="word">TOTAL</div>
+      </ion-col>
+
+      <ion-col *ngFor="let player of this.players" class="ion-text-center player">
+        <div class="player-name"><ion-text>{{(player.name[0]+player.name[1]).toUpperCase()}}</ion-text></div>
+        <app-field></app-field>
+        <app-field></app-field>
+        <app-field></app-field>
+        <app-field></app-field>
+        <app-field></app-field>
+        <app-field></app-field>
+        <app-field></app-field>
+        <app-field></app-field>
+        <app-field></app-field>
+        <app-field></app-field>
+        <app-field></app-field>
+        <app-field></app-field>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
 </ion-content>

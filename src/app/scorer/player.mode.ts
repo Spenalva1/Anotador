@@ -1,18 +1,18 @@
 import { preserveWhitespacesDefault } from '@angular/compiler';
 
 export class Player {
-    private name: string;
-    private uno: number;
-    private dos: number;
-    private tres: number;
-    private cuatro: number;
-    private cinco: number;
-    private seis: number;
-    private escalera: number;
-    private full: number;
-    private poker: number;
-    private generala: number;
-    private generalaDoble: number;
+    name: string;
+    uno: number;
+    dos: number;
+    tres: number;
+    cuatro: number;
+    cinco: number;
+    seis: number;
+    escalera: number;
+    full: number;
+    poker: number;
+    generala: number;
+    generalaDoble: number;
 
     constructor(name: string) {
         this.name = name;
